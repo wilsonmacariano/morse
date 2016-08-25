@@ -61,3 +61,4 @@ stringToMorse s = sequence $ fmap charToMorse s
 
 morseToChar :: Morse -> Maybe Char
 morseToChar m = M.lookup m morseToLetter
+
