@@ -3,7 +3,6 @@ module Main where
 
 import Control.Monad (forever, when)
 import Data.List (intercalate)
-import Data.Traversable (traverse)
 import Morse (stringToMorse, morseToChar)
 import System.Environment (getArgs)
 import System.Exit (exitFailure, exitSuccess)
@@ -31,7 +30,6 @@ convertFromMorse :: IO ()
 convertFromMorse = forever $ do
   weAreDone <- hIsEOF stdin
   when weAreDone exitSuccess
-
   -- otherwise, proceed.
   line <- hGetLine stdin
   convertLine line
@@ -59,3 +57,4 @@ main = do
                          \as being 'from' or 'to' morse,\
                          \ such as: morse to"
                 exitFailure
+    _ -> exitFailure -- Exausted the pattern
